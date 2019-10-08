@@ -27,9 +27,36 @@ void insert (Queue *queue, int item)
     queue->items[++queue->rear] = item;
 }
 
+int queue_is_full(Queue *queue)
+{
+
+    return queue->rear == (QUEUE_SIZE - 1);
+}
+void insert_and_test(Queue *queue, int item, int *queue_overflow)
+{
+    if (!(*queue_overflow = queue_is_full(queue)))
+        queue->items[++queue->rear] = item;
+
+}
 int main ()
 {
     Queue my_queue = __queue__();
+    int queue_overflow;
+
+
+    for (int i = 0; i < QUEUE_SIZE; i++)
+    {
+        insert_and_test(&my_queue, 1000, &queue_overflow);
+        if (queue_overflow){
+            printf("Fila cheia\n");
+        }
+    }
+    
+    for (int i = 0; i < QUEUE_SIZE; i++)
+    {
+        printf("Posição: %d, Valor: %d \n", i, my_queue.items[i] );
+    }
+    
 
     for (int i=0; i < QUEUE_SIZE; i++)
     {
