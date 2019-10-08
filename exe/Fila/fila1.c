@@ -47,9 +47,11 @@ int main ()
     for (int i = 0; i < QUEUE_SIZE; i++)
     {
         insert_and_test(&my_queue, 1000, &queue_overflow);
-        if (queue_overflow){
-            printf("Fila cheia\n");
-        }
+    }
+
+    insert_and_test(&my_queue, 1000, &queue_overflow);
+    if (queue_overflow){
+        printf("Fila cheia\n");
     }
     
     for (int i = 0; i < QUEUE_SIZE; i++)
